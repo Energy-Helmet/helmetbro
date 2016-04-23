@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "slackbots": "^0.5.1",
+    "express": "^4.13.4",
+    "dotenv": "^2.0.0"
+  }
+}
