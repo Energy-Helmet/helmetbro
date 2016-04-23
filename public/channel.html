@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style.css">
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body style="background:black">
@@ -14,7 +13,7 @@
 
     <script id="messages-template" type="text/template">
       <% messages.forEach(function(message) { %>
-        <div>
+        <div class="message">
           <span class="from"><img src="<%= message.from.avatar %>" alt="<%= message.from.name %>" class="img-circle"></span>
           <span class="message"><%- message.text %></span>
         </div>
