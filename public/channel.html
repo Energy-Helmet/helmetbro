@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body style="background:black">
+    <div id="messages" style="color:white"></div>
+
+    <script id="messages-template" type="text/template">
+      <% messages.forEach(function(message) { %>
+        <div>
+          <span class="from"><img src="<%= message.from.avatar %>" alt="<%= message.from.name %>" class="img-circle"></span>
+          <span class="message"><%- message.text %></span>
+        </div>
+      <% }); %>
+    </script>
+
+    <script type="text/javascript">
+      var messagesTemplate = _.template($('#messages-template').html());
+
+      var channel = document.location.search.slice(1);
+      (function loop() {
+        $.get('/messages/' + channel).then(function(data) {
+          $('#messages').html(messagesTemplate({ messages: data }));
+
+          setTimeout(loop, 500);
+        });
+      })();
+    </script>
+  </body>
+</html>
